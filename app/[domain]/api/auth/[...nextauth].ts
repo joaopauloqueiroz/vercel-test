@@ -9,24 +9,6 @@ import {
 } from "next";
 import NextAuth, { NextAuthOptions, getServerSession } from "next-auth";
 
-export interface RootSession {
-  data: Data;
-  status: string;
-}
-
-export interface Data {
-  user: User;
-  expires: string;
-}
-
-export interface User {
-  id: string;
-  image: string;
-  emailVerified: any;
-  name: string;
-  email: string;
-}
-
 const authOptions: NextAuthOptions = {
   secret: process.env.GOOGLE_SECRET,
   providers: [
