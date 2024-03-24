@@ -1,9 +1,8 @@
-import { notFound } from "next/navigation";
-import prisma from "@/lib/prisma";
-import { getPostData, getSiteData } from "@/lib/fetchers";
 import BlogCard from "@/components/blog-card";
 import BlurImage from "@/components/blur-image";
 import MDX from "@/components/mdx";
+import { getPostData, getSiteData } from "@/lib/fetchers";
+import prisma from "@/lib/prisma";
 import { placeholderBlurhash, toDateString } from "@/lib/utils";
 
 export async function generateMetadata({
@@ -91,7 +90,8 @@ export default async function SitePostPage({
   const data = await getPostData(domain, slug);
 
   if (!data) {
-    notFound();
+    return "not found page";
+    // notFound();
   }
 
   return (
