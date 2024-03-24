@@ -38,13 +38,14 @@ export default async function SiteHomePage({
   params: { domain: string };
 }) {
   const domain = decodeURIComponent(params.domain);
+  console.log(domain);
   const [data, posts] = await Promise.all([
     getSiteData(domain),
     getPostsForSite(domain),
   ]);
-
+  console.log(data, posts);
   if (!data) {
-    return "ok";
+    return <div>Não tem posts</div>;
     // notFound();
   }
 
