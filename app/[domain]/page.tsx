@@ -5,7 +5,6 @@ import prisma from "@/lib/prisma";
 import { placeholderBlurhash, toDateString } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const allSites = await prisma.site.findMany({
@@ -45,7 +44,8 @@ export default async function SiteHomePage({
   ]);
 
   if (!data) {
-    notFound();
+    return "ok";
+    // notFound();
   }
 
   return (
