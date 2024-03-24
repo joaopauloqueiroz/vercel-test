@@ -43,9 +43,15 @@ export default async function SiteHomePage({
     getSiteData(domain),
     getPostsForSite(domain),
   ]);
+
   console.log(data, posts);
   if (!data) {
-    return <div>Não tem posts</div>;
+    return (
+      <div className="text-white">
+        Não tem posts
+        <pre>{(JSON.stringify(data), JSON.stringify(posts))}</pre>
+      </div>
+    );
     // notFound();
   }
 
